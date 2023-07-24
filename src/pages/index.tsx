@@ -1,9 +1,15 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
+import Header from "@/components/Header/Header";
+import VideosSection from "@/components/VideosSection/VideosSection";
+import GraphicSection from "@/components/GraphicSection/GraphicSection";
+import Footer from "@/components/Footer/Footer";
+import api from "./api/api";
 
-const inter = Inter({ subsets: ["latin"] });
+interface Props {
+  videos: VideoData[];
+}
 
-export default function Home() {
+export default function Home({ videos }: Props) {
   return (
     <>
       <Head>
@@ -12,6 +18,19 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
+      <VideosSection videos={videos} />
+      <GraphicSection />
+      <Footer />
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const videos = await api.list();
+  return {
+    props: {
+      videos,
+    },
+  };
+};

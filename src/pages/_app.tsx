@@ -5,12 +5,12 @@ import localFont from "next/font/local";
 const myFont = localFont({
   src: [
     {
-      path: "./PlusJakartaSans-Regular.ttf",
+      path: "../assets/fonts/PlusJakartaSans-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "./PlusJakartaSans-Bold.ttf",
+      path: "../assets/fonts/PlusJakartaSans-Bold.ttf",
       weight: "700",
       style: "normal",
     },
